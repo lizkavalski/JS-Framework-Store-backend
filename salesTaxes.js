@@ -2,23 +2,20 @@
 
 const data = require( './data/store.json');
 
+let products = Object.keys(data);
+let cart = [];
 
 
-function getAllProduct(){
-  return Object.keys(data);
+function getOneProduct(product){
+  if (products.includes(product)){
+    cart.push(product)
+    return `We have this ${product} in store `;
+  }else if(!products.includes(product)){
+    return `We do have this ${product} in store`;
+  }
 }
-
-console.log(getAllProduct(), 'this should show all the keys');
-
-
-
-
-// function checkItem(product){
-//   console.log(`this is the item : ${product}`);
-//   if(product === data.product.name ){
-//     console.log(`${product} matches ${data.product.name }`);
-//   }else{
-//     console.log(`${product} dose not matches ${data.product.name }`);
-//   }
-// }
-//console.log(filterProducts('Books'), 'it works once');
+console.log( products, 'this should show all the keys');
+console.log(getOneProduct('Book'), 'this show one item');
+console.log(getOneProduct('Book'), 'this show same  item');
+console.log(getOneProduct('Music-CD'), 'adding to the cart');
+console.log(cart, 'this is the shoping cart');
