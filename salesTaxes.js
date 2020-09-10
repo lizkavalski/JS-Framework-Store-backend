@@ -1,34 +1,33 @@
 'use strict';
 
-const data = require( './data/store.json');
+const data = require( './data/store');
 
 let cart = [] ;
 
-class Cart {
-  addProduct(name){
-    let addOne = data.filter(data => data.name === name);
-    cart.push(addOne);
-    return cart;
+
+function addProduct(name){
+  if(data.items === name);
+  cart.push(name);
+}
+function removeProduct(name){
+  let index = cart.indexOf(name);
+  if (index > -1) {
+    cart.splice(index, 1);
   }
-  removeProduct(name){
-    let removeOne = cart.filter(data => data.name === name);
-    cart.splice(0,removeOne);
-    return cart;
-  }
-};
+  return name;
+}
 
-let shoppingCart = new Cart;
-// function filterTax(taxType){
-//   let filterTaxType = cart.filter(data => data.taxType === taxType);
-//   return filterTaxType;
-// }
+function getPrice(name){
+  let findItem = cart.filter()
+}
 
 
+addProduct('Book');
+addProduct('Bottle Perfume');
+addProduct('Music CD');
+removeProduct('Bottle Perfume');
+console.log( 'this is the cart', cart);
 
-shoppingCart.addProduct('Book');
-shoppingCart.addProduct('Bottle Perfume');
-shoppingCart.addProduct('Music CD');
-console.log('this was removed', shoppingCart.removeProduct('Bottle Perfume'));
-// console.log( 'this is the shopping cart', cart);
-
-
+// "catagory":"books",
+// "price":12.49,
+// "taxType":"except"
