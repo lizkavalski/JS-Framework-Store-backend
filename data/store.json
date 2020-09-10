@@ -1,57 +1,57 @@
- {
-    "Book":{
-      "name":"Book",
-      "catagory":"books",
-      "price":12.49,
-      "taxType":"except"
-    },
-    "Chocolate-Bar":{ 
-      "name":"Chocolate Bar",
-      "catagory":"Food",
-      "price":0.85,
-      "taxType":"except"
-    },
-    "Headache-Medication":{
-      "name":"Headache Medication ",
-      "catagory":"Medical",
-      "price":9.75,
-      "taxType":"except"
-    },
-    "Music-CD":{
-      "name":"Music CD",
-      "catagory":"Music",
-      "price":14.99,
-      "taxType":"basic" 
-    },
-    "Bottle-Perfume":{
-      "name":"Bottle Perfume",
-      "catagory":"Fragrance",
-      "price":18.99,
-      "taxType":"basic"
-    },
-    "Imported-box-of-chocolates":{
-      "name":"Imported Box of Chocolates",
-      "catagory":"Food",
-      "price":10.00,
-      "taxType":"import"
-    },
-    "Imported-box-of-chocolates-Large":{
-      "name":"Imported box of chocolates, Large",
-      "catagory":"Food",
-      "price":11.25,
-      "taxType":"import"},
-    "Imported-Bottle-Perfume-small":{
-      "name":"Imported Bottle Perfume, Small",
-      "catagory":"Fragrance",
-      "price":27.99,
-      "taxType":"import"
-    },
-    "Imported-Bottle-Perfume-large":{
-      "name":"Imported Bottle Perfume, large",
-      "catagory":"Fragrance",
-      "price":47.50,
-      "taxType":"import"
-    }
+[
+  {
+    "name":"Book",
+    "catagory":"books",
+    "price":12.49,
+    "taxType":"except"
+  },
+  {
+    "name":"Chocolate Bar",
+    "catagory":"Food",
+    "price":0.85,
+    "taxType":"except"
+  },
+  {
+    "name":"Headache Medication ",
+    "catagory":"Medical",
+    "price":9.75,
+    "taxType":"except"
+  },
+  {
+    "name":"Music CD",
+    "catagory":"Music",
+    "price":14.99,
+    "taxType":"basic" 
+  },
+  {
+    "name":"Bottle Perfume",
+    "catagory":"Fragrance",
+    "price":18.99,
+    "taxType":"basic"
+  },
+  {
+    "name":"Imported Box of Chocolates",
+    "catagory":"Food",
+    "price":10.00,
+    "taxType":"import"
+  },
+  {
+    "name":"Imported box of chocolates, Large",
+    "catagory":"Food",
+    "price":11.25,
+    "taxType":"import"},
+  { 
+    "name":"Imported Bottle Perfume, Small",
+    "catagory":"Fragrance",
+    "price":27.99,
+    "taxType":"import"
+  },
+  {
+    "name":"Imported Bottle Perfume, large",
+    "catagory":"Fragrance",
+    "price":47.50,
+    "taxType":"import"
   }
+]
 
 

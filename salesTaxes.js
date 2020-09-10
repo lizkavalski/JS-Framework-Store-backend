@@ -2,20 +2,36 @@
 
 const data = require( './data/store.json');
 
-let products = Object.keys(data);
-let cart = [];
+let cart = [] ;
 
-
-function getOneProduct(product){
-  if (products.includes(product)){
-    cart.push(product)
-    return `We have this ${product} in store `;
-  }else if(!products.includes(product)){
-    return `We do have this ${product} in store`;
+class Cart {
+  addProduct(name){
+    let findOne = data.filter(data => data.name === name);
+    cart.push(findOne);
+    return findOne;
   }
-}
-console.log( products, 'this should show all the keys');
-console.log(getOneProduct('Book'), 'this show one item');
-console.log(getOneProduct('Book'), 'this show same  item');
-console.log(getOneProduct('Music-CD'), 'adding to the cart');
-console.log(cart, 'this is the shoping cart');
+  removeProduct(name){
+    for (let i = 0; i < cart.length; i++){
+      if (cart.includes(name)){
+        cart.splice(i,1);
+      }
+    }
+    return cart;
+  }
+};
+
+let shoppingCart = new Cart;
+// function filterTax(taxType){
+//   let filterTaxType = cart.filter(data => data.taxType === taxType);
+//   return filterTaxType;
+// }
+
+
+
+shoppingCart.addProduct('Book');
+shoppingCart.addProduct('Bottle Perfume');
+shoppingCart.addProduct('Music CD');
+console.log(`${shoppingCart.removeProduct('Bottle Perfume')} this was removed`);
+console.log( 'this is the shopping cart', cart);
+
+
