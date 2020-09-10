@@ -6,16 +6,13 @@ let cart = [] ;
 
 class Cart {
   addProduct(name){
-    let findOne = data.filter(data => data.name === name);
-    cart.push(findOne);
-    return findOne;
+    let addOne = data.filter(data => data.name === name);
+    cart.push(addOne);
+    return cart;
   }
   removeProduct(name){
-    for (let i = 0; i < cart.length; i++){
-      if (cart.includes(name)){
-        cart.splice(i,1);
-      }
-    }
+    let removeOne = cart.filter(data => data.name === name);
+    cart.splice(0,removeOne);
     return cart;
   }
 };
@@ -31,7 +28,7 @@ let shoppingCart = new Cart;
 shoppingCart.addProduct('Book');
 shoppingCart.addProduct('Bottle Perfume');
 shoppingCart.addProduct('Music CD');
-console.log(`${shoppingCart.removeProduct('Bottle Perfume')} this was removed`);
-console.log( 'this is the shopping cart', cart);
+console.log('this was removed', shoppingCart.removeProduct('Bottle Perfume'));
+// console.log( 'this is the shopping cart', cart);
 
 
