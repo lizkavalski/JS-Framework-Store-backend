@@ -1,0 +1,22 @@
+{
+  "name": "dealeron-codechallenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "salesTaxes.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lizkavalski/DealerOn-CodeChallenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lizkavalski/DealerOn-CodeChallenge/issues"
+  },
+  "homepage": "https://github.com/lizkavalski/DealerOn-CodeChallenge#readme",
+  "dependencies": {
+    "jest": "^26.4.2"
+  }
+}
