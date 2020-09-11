@@ -15,13 +15,15 @@ class Cart {
   removeProduct(item){
     cart = cart.filter(cart => cart.item !== item);
   }
+  getAllCart(){
+    return (cart);
+  }
 };
 
 
-class Price {
-  FindPrice(item){
-    if (data.indexOf(item) === data)
-      cart.push(item);
+class Receipt {
+  checkMuliples(Cart){
+
   }
 }
 
@@ -30,8 +32,8 @@ let shop = new Cart;
 shop.addProduct('Book');
 shop.addProduct('Bottle Perfume');
 shop.addProduct('Music CD');
-shop.removeProduct('Music CD');
-console.log( 'this is the cart', cart);
+// shop.removeProduct('Music CD');
+console.log(shop.getAllCart());
 // console.log('this is getting the item', look.getPrice('Book'));
 
 
