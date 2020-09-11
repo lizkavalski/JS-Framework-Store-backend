@@ -1,54 +1,57 @@
 [
   {
-    "items":[
-      {
-        "Book":{
-          "catagory":"books",
-          "price":12.49,
-          "taxType":"except"
-        },
-        "Chocolate Bar":{
-          "catagory":"Food",
-          "price":0.85,
-          "taxType":"except"
-        },
-        "Headache Medication":{
-          "catagory":"Medical",
-          "price":9.75,
-          "taxType":"except"
-        },
-        "Music CD": {
-          "catagory":"Music",
-          "price":14.99,
-          "taxType":"basic" 
-        },
-        "Bottle Perfume":{
-          "catagory":"Fragrance",
-          "price":18.99,
-          "taxType":"basic"
-        },
-        "Imported Box of Chocolates":{
-          "catagory":"Food",
-          "price":10.00,
-          "taxType":"import"
-        },
-        "Imported box of chocolates, Large":{
-        "catagory":"Food",
-        "price":11.25,
-        "taxType":"import"
-        },
-        "Imported Bottle Perfume, Small": { 
-          "catagory":"Fragrance",
-          "price":27.99,
-          "taxType":"import"
-        },
-        "Imported Bottle Perfume, large":{
-        "catagory":"Fragrance",
-        "price":47.50,
-        "taxType":"import"
-        }
-      }
-    ]
+    "item":"Book",
+    "catagory":"books",
+    "price":12.49,
+    "taxType":"except"
+  },
+  { 
+    "item":"Chocolate Bar",
+    "catagory":"Food",
+    "price":0.85,
+    "taxType":"except"
+  },
+  {
+    "item":"Headache Medication",
+    "catagory":"Medical",
+    "price":9.75,
+    "taxType":"except"
+  },
+  { 
+    "item":"Music CD",
+    "catagory":"Music",
+    "price":14.99,
+    "taxType":"basic" 
+  },
+  {
+    "item":"Bottle Perfume",
+    "catagory":"Fragrance",
+    "price":18.99,
+    "taxType":"basic"
+  },
+  {
+    "item":"Imported Box of Chocolates",
+    "catagory":"Food",
+    "price":10.00,
+    "taxType":"import"
+  },
+  {
+    "item":"Imported box of chocolates, Large",
+    "catagory":"Food",
+    "price":11.25,
+    "taxType":"import"
+  },
+  {
+    "item":"Imported Bottle Perfume, Small", 
+    "catagory":"Fragrance",
+    "price":27.99,
+    "taxType":"import"
+  },
+  {
+  "item":"Imported Bottle Perfume, large",
+  "catagory":"Fragrance",
+  "price":47.50,
+  "taxType":"import"
   }
 ]
 
