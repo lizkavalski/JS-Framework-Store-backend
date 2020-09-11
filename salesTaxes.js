@@ -1,21 +1,43 @@
 'use strict';
 
-const data = require( './data/store.json');
+const data = require('./data/store.json');
+// console.log('this is data:', data)
+let cart = [] ;
 
-let products = Object.keys(data);
-let cart = [];
+class Cart {
+  addProduct(item){
+    let getOne = data.filter(data => data.item === item);
+    cart.push(getOne);
+    cart.flat(1);
+    cart = cart.flat();
+  }
+
+  removeProduct(item){
+    cart = cart.filter(cart => cart.item !== item);
+  }
+};
 
 
-function getOneProduct(product){
-  if (products.includes(product)){
-    cart.push(product)
-    return `We have this ${product} in store `;
-  }else if(!products.includes(product)){
-    return `We do have this ${product} in store`;
+class Price {
+  FindPrice(item){
+    if (data.indexOf(item) === data)
+      cart.push(item);
   }
 }
-console.log( products, 'this should show all the keys');
-console.log(getOneProduct('Book'), 'this show one item');
-console.log(getOneProduct('Book'), 'this show same  item');
-console.log(getOneProduct('Music-CD'), 'adding to the cart');
-console.log(cart, 'this is the shoping cart');
+
+let shop = new Cart;
+// let look = new Price;
+shop.addProduct('Book');
+shop.addProduct('Bottle Perfume');
+shop.addProduct('Music CD');
+shop.removeProduct('Music CD');
+console.log( 'this is the cart', cart);
+// console.log('this is getting the item', look.getPrice('Book'));
+
+
+
+
+
+// "catagory":"books",
+// "price":12.49,
+// "taxType":"except"
