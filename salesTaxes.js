@@ -16,16 +16,15 @@ class Cart {
     cart = cart.filter(cart => cart.item !== item);
   }
   getAllCart(){
-    return (cart);
+    return cart;
   }
 };
 
 
 class Receipt {
-  checkMuliples(Cart){
 
-  }
 }
+
 
 let shop = new Cart;
 // let look = new Price;
