@@ -22,7 +22,7 @@ class Cart {
 
 
 class Receipt {
-  saleTax(){
+  totalSaleTax(){
     let salestax = 0;
     for (const item of cart) {
       if(item.taxType === 'basic'){
@@ -35,9 +35,26 @@ class Receipt {
         salestax += item.price * .05;
       }
     }
-   console.log(`Sales Tax: $${salestax.toFixed(2)}`);
+    console.log(`Sales Tax: $${salestax.toFixed(2)}`);
   };
-
+  totalOfEverything(){
+    let total = 0;
+    for (const item of cart) {
+      if (item.taxType === 'except'){
+        total += item.price;
+      }
+      if(item.taxType === 'basic'){
+        total += item.price + (item.price * .10);
+      }
+      if(item.taxType === 'import' && item.catagory !== 'Food'){
+        total += item.price + (item.price * .15);
+      }
+      if(item.taxType === 'import' && item.catagory === 'Food'){
+        total += item.price + (item.price * .05);
+      }
+    }
+    console.log(`Total: $${total.toFixed(2)}`);
+  };
 
 
 
@@ -52,8 +69,8 @@ shop.addProduct('Music CD');
 shop.addProduct('Imported Box of Chocolates');
 // shop.removeProduct('Music CD');
 // console.log(shop.getAllCart());
-look.saleTax();
-
+look.totalSaleTax();
+look.totalOfEverything();
 
 
 
