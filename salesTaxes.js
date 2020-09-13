@@ -34,12 +34,8 @@ class Receipt {
       if(item.taxType === 'import' && item.catagory === 'Food'){
         salestax += item.price * .05;
       }
-
     }
-    console.log('counter with round', salestax.toFixed(2));
-    console.log('counter without round', salestax);
-
-    return salestax.toFixed(2);
+   console.log(`Sales Tax: $${salestax.toFixed(2)}`);
   };
 
 
@@ -56,7 +52,7 @@ shop.addProduct('Music CD');
 shop.addProduct('Imported Box of Chocolates');
 // shop.removeProduct('Music CD');
 // console.log(shop.getAllCart());
-console.log('this is total sales tax price of item', look.saleTax());
+look.saleTax();
 
 
 
