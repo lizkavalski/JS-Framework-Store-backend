@@ -22,18 +22,41 @@ class Cart {
 
 
 class Receipt {
+  saleTax(){
+    let salestax = 0;
+    for (const item of cart) {
+      if(item.taxType === 'basic'){
+        salestax += item.price * .10;
+      }
+      if(item.taxType === 'import' && item.catagory !== 'Food'){
+        salestax += item.price * .15;
+      }
+      if(item.taxType === 'import' && item.catagory === 'Food'){
+        salestax += item.price * .05;
+      }
 
-}
+    }
+    console.log('counter with round', salestax.toFixed(2));
+    console.log('counter without round', salestax);
+
+    return salestax.toFixed(2);
+  };
+
+
+
+
+};
 
 
 let shop = new Cart;
-// let look = new Price;
+let look = new Receipt;
 shop.addProduct('Book');
-shop.addProduct('Bottle Perfume');
+shop.addProduct('Imported Bottle Perfume, Small');
 shop.addProduct('Music CD');
+shop.addProduct('Imported Box of Chocolates');
 // shop.removeProduct('Music CD');
-console.log(shop.getAllCart());
-// console.log('this is getting the item', look.getPrice('Book'));
+// console.log(shop.getAllCart());
+console.log('this is total sales tax price of item', look.saleTax());
 
 
 
