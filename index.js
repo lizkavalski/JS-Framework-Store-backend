@@ -3,18 +3,23 @@
 
 let Store = require('./cart');
 
+// let shop = new Store.Cart;
+// let look = new Store.Receipt;
+
+let shop2 = new Store.Cart;
+let look2 = new Store.Receipt;
 
 
-let shop = new Store.Cart;
-let look = new Store.Receipt;
-
-shop.addProduct('Book');
-shop.addProduct('Imported Bottle Perfume, Small');
-shop.addProduct('Music CD');
-shop.addProduct('Imported Box of Chocolates');
-shop.removeProduct('Music CD');
+// shop.addProduct('Book',1);
+// shop.addProduct('Book',1);
+// shop.addProduct('Music CD',4);
+// shop.addProduct('Chocolate Bar',2);
 // shop.getAllCart();
-// console.log(shop.getAllCart());
-// look.totalSaleTax();
-// look.pricePlusTaxPerItem();
-look.totalOfEverythingAndSaleTax();
+// look.totalOfEverythingAndSaleTax();
+
+console.log('++++++++++++++++++++++++++++++++++++++++++++++++++++++')
+
+shop2.addProduct('Imported Box of Chocolates', 6);
+shop2.addProduct('Imported Bottle Perfume',10);
+shop2.getAllCart();
+look2.totalOfEverythingAndSaleTax();

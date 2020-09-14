@@ -1,57 +1,66 @@
 [
   {
+    "id":1,
     "item":"Book",
     "catagory":"books",
     "price":12.49,
     "taxType":"except"
   },
   { 
+    "id":2,
     "item":"Chocolate Bar",
     "catagory":"Food",
     "price":0.85,
     "taxType":"except"
   },
   {
+    "id":3,
     "item":"Headache Medication",
     "catagory":"Medical",
     "price":9.75,
     "taxType":"except"
   },
   { 
+    "id":4,
     "item":"Music CD",
     "catagory":"Music",
     "price":14.99,
     "taxType":"basic" 
   },
   {
+    "id":5,
     "item":"Bottle Perfume",
     "catagory":"Fragrance",
     "price":18.99,
     "taxType":"basic"
   },
   {
+    "id":6,
     "item":"Imported Box of Chocolates",
     "catagory":"Food",
     "price":10.00,
     "taxType":"import"
   },
   {
-    "item":"Imported box of chocolates, Large",
+    "id":7,
+    "item":"Imported box of chocolates",
     "catagory":"Food",
     "price":11.25,
     "taxType":"import"
   },
   {
-    "item":"Imported Bottle Perfume, Small", 
+    "id":9,
+    "item":"Imported Bottle Perfume", 
     "catagory":"Fragrance",
     "price":27.99,
     "taxType":"import"
   },
   {
-  "item":"Imported Bottle Perfume, large",
-  "catagory":"Fragrance",
-  "price":47.50,
-  "taxType":"import"
+    "id":10,
+    "item":"Imported Bottle Perfume",
+    "catagory":"Fragrance",
+    "price":47.50,
+    "taxType":"import"
   }
 ]
 
