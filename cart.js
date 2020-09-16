@@ -37,12 +37,12 @@ class Cart {
       map[a.id].count++;
     });
     this.cart = result;
-    console.log('This your cart:', this.cart);
+    return 'This your cart:', this.cart;
   }
 
   removeAllCart(){
     // cart.length = 0;
-    console.log('Cart is empty');
+    return 'Cart is empty';
   }
 
   totalOfEverythingAndSaleTax(){
@@ -51,11 +51,12 @@ class Cart {
     for (const item of this.cart) {
 
       if (item.taxType === 'except' && item.count <= 1 ){
-        total += item.price;
+        total += Math.ceil(item.price * 100) / 100;
         console.log( `${item.item}: $${item.price}` );
       }
       if (item.taxType === 'except' && item.count > 1){
-        total += item.price * item.count;
+        let items = item.price * item.count;
+        total += Math.ceil(items * 100 ) / 100 ;
         console.log( `${item.item}: $${total} (${item.count} @ $${item.price})` );
       }
 
@@ -63,7 +64,7 @@ class Cart {
         let saleTax = item.price * .10;
         let itemPlusTax = item.price + saleTax;
         totalsalestax += saleTax;
-        total += itemPlusTax;
+        total += Math.ceil(itemPlusTax * 100) / 100;
         console.log( `${item.item}: $${itemPlusTax.toFixed(2)}` );
       }
       if (item.taxType === 'basic' && item.count > 1){
@@ -71,49 +72,51 @@ class Cart {
         let itemsPlusTax = (item.price * item.count) + saleTax;
         let oneItemPlus = item.price + (item.price * .10);
         totalsalestax += saleTax;
-        total += itemsPlusTax;
+        total += Math.ceil(itemsPlusTax * 100) / 100;
         console.log( `${item.item}: $${itemsPlusTax.toFixed(2)} (${item.count} @ $${oneItemPlus.toFixed(2)})` );
       }
 
 
-      if(item.taxType === 'import' && item.catagory === 'Food' && item.count <= 1){
+      if((item.taxType === 'import' && item.catagory === 'Food') && item.count <= 1){
         let saleTax = item.price * .05;
         let itemPlusTax = item.price + saleTax;
+        console.log('this is item plus tax', itemPlusTax)
         totalsalestax += saleTax;
-        total += itemPlusTax;
-        console.log( `${item.item}: $${itemPlusTax.toFixed(2)}` );;
+        total += Math.ceil(itemPlusTax * 100) / 100;
+        console.log( `${item.item}: $${itemPlusTax.toFixed(2)}` );
       }
-      if (item.taxType === 'import' && item.catagory === 'Food' && item.count > 1){
+      if ((item.taxType === 'import' && item.catagory === 'Food') && item.count > 1){
         let saleTax = (item.price * .05) * item.count;
         let itemsPlusTax = (item.price * item.count) + saleTax;
         let oneItemPlus = item.price + (item.price * .05);
         totalsalestax += saleTax;
-        total += itemsPlusTax;
-        console.log( `${item.item}: $${itemsPlusTax.toFixed(2)} (${item.count} @ $${oneItemPlus.toFixed(2)})`);
-      }
-
-
-
-      if(item.taxType === 'import' && item.catagory !== 'Food' && item.count <= 1 ){
-        let saleTax = item.price * .15;
-        let itemPlusTax = item.price + saleTax;
-        totalsalestax += saleTax;
-        total += itemPlusTax ;
-        console.log( `${item.item}: $${Math.ceil(itemPlusTax * 100) / 100}` );
-      }
-      if (item.taxType === 'import' && item.catagory !== 'Food' && item.count > 1){
-        let saleTax = (item.price * .05) * item.count;
-        let itemsPlusTax = (item.price * item.count) + saleTax;
-        let oneItemPlus = item.price + (item.price * .05);
-        totalsalestax += saleTax;
-        total += itemsPlusTax;
+        total += Math.ceil(itemsPlusTax * 100) / 100;
         console.log( `${item.item}: $${itemsPlusTax.toFixed(2)} (${item.count} @ $${oneItemPlus.toFixed(2)})` );
       }
 
+      if((item.taxType === 'import' && item.catagory !== 'Food') && item.count <= 1 ){
+        let saleTax = item.price * .15;
+        let itemPlusTax = item.price + saleTax;
+        console.log('this is item plus tax', itemPlusTax);
+        totalsalestax += saleTax;
+        total += Math.ceil(itemPlusTax * 100) / 20;
+        console.log( `${item.item}: $${itemPlusTax.toFixed(2)}` );
+      }
+      if (item.taxType === 'import' && item.catagory !== 'Food' && item.count > 1){
+        let saleTaxOneItem = item.price * .15;
+        let saleTax = saleTaxOneItem * item.count;
+        let itemsPlus = item.price * item.count;
+        let itemsPlusTax = itemsPlus + saleTax;
+        let oneItemPlus = item.price + (item.price * .15);
+        totalsalestax += saleTax;
+        total += Math.ceil(itemsPlusTax * 100) / 100;
+        console.log( `${item.item}: $${Math.ceil(itemsPlusTax * 100) / 100} (${item.count} @ $${Math.ceil(oneItemPlus * 100) / 100})` );
+      }
 
+
+      console.log(`Sales Tax: $${Math.ceil(totalsalestax * 20) / 20}`);
     }
-    console.log(`Sales Tax: $${Math.ceil(totalsalestax * 20) / 20}`);
-    console.log(`Total: $${Math.ceil(total * 100) / 100}`);
+    console.log(`Total: $${total.toFixed(2)}`);
   };
 
 };
