@@ -1,7 +1,7 @@
 'use strict';
-let Store = require('./cart');
-let mockShop = new Store.Cart;
-let mockShop2 = new Store.Cart;
+let Cart = require('./cart');
+let mockShop = new Cart;
+
 
 
 describe('Cart function', () => {
@@ -28,15 +28,5 @@ describe('Cart function', () => {
     expect(removeItems).toBeCalled();
   });
 });
-describe('Reciept function', () =>{
-  it('Grab the Cart and find the total',()=>{
-    const everything = jest.spyOn(mockShop2,'totalOfEverythingAndSaleTax');
-    mockShop2.addProduct('Book',1);
-    mockShop2.addProduct('Book',1);
-    mockShop2.addProduct('Music CD',4);
-    mockShop2.addProduct('Chocolate Bar',2);
-    mockShop2.totalOfEverythingAndSaleTax();
-    expect(everything).toBeCalled();
-  });
-});
+
 
