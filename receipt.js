@@ -59,14 +59,12 @@ class Receipt extends Cart{
       console.log( `${item.item}: $${itemPlusTax.toFixed(2)}` );
     }
     if ((item.taxType === 'import' && item.catagory === 'Food') && item.count > 1){
-      let saleTax = item.price * .05;
-      console.log('line 63',saleTax);
-      let saleTaxMore = saleTax * item.count;
-      console.log('line 65',saleTaxMore);
+      let saleTax = Math.ceil((item.price * .05) * 10) / 10;
+      let saleTaxMore = Math.ceil(saleTax * 100) / 100 * item.count;
       let itemsPlusTax = (item.price * item.count) + saleTaxMore;
       let oneItemPlus = item.price + saleTax;
       total += Math.ceil(itemsPlusTax * 100) / 100;
-      console.log( `${item.item}: $${Math.ceil(itemsPlusTax.toFixed(2) * 100)/100} (${item.count} @ $${oneItemPlus.toFixed(2)})` );
+      console.log( `${item.item}: $${itemsPlusTax.toFixed(2)} (${item.count} @ $${oneItemPlus.toFixed(2)})` );
     }
     return total;
   }
@@ -76,31 +74,44 @@ class Receipt extends Cart{
       let saleTax = item.price * .05;
       totalSaleTax += saleTax;
     }
-    if (item.taxType === 'basic' && item.count > 1){
-      let saleTax = (item.price * .05) * item.count;
-      totalSaleTax += saleTax;
+    if (item.taxType === 'import' && item.catagory === 'Food' && item.count > 1){
+      let saleTax = Math.ceil((item.price * .05) * 20) / 20;
+      let saleTaxMore = Math.ceil(saleTax * 100) / 100 * item.count;
+      totalSaleTax += saleTaxMore;
     }
     return totalSaleTax;
   }
-  // checkForImportNotFood(item){
-  //   let total = 0;
-  //   if((item.taxType === 'import' && item.catagory !== 'Food') && item.count <= 1 ){
-  //     let saleTax = item.price * .15;
-  //     let itemPlusTax = item.price + saleTax;
-  //     total += Math.ceil(itemPlusTax * 100) / 100;
-  //     console.log( `${item.item}: $${itemPlusTax.toFixed(2)}` );
-  //   }
-  //   if (item.taxType === 'import' && item.catagory !== 'Food' && item.count > 1){
-  //     let saleTaxOneItem = item.price * .15;
-  //     let saleTax = saleTaxOneItem * item.count;
-  //     let itemsPlus = item.price * item.count;
-  //     let itemsPlusTax = itemsPlus + saleTax;
-  //     let oneItemPlus = item.price + (item.price * .15);
-  //     total += Math.ceil(itemsPlusTax * 100) / 100;
-  //     console.log( `${item.item}: $${Math.ceil(itemsPlusTax * 100) / 100} (${item.count} @ $${Math.ceil(oneItemPlus * 100) / 100})` );
-  //   }
-  //   return total;
-  // }
+  checkForImportNotFood(item){
+    let total = 0;
+    if((item.taxType === 'import' && item.catagory !== 'Food') && item.count <= 1 ){
+      let saleTax = Math.ceil((item.price * .15) * 20) / 20;
+      let itemPlusTax = item.price + saleTax;
+      total += Math.ceil(itemPlusTax * 100) / 100;
+      console.log( `${item.item}: $${itemPlusTax.toFixed(2)}` );
+    }
+    if (item.taxType === 'import' && item.catagory !== 'Food' && item.count > 1){
+      let saleTax = Math.ceil((item.price * .15) * 20) / 20;
+      let saleTaxMore = Math.ceil(saleTax * 100) / 100 * item.count;
+      let itemsPlusTax = (item.price * item.count) + saleTaxMore;
+      let oneItemPlus = item.price + saleTax;
+      total += Math.ceil(itemsPlusTax * 100) / 100;
+      console.log( `${item.item}: $${Math.ceil(itemsPlusTax * 100) / 100} (${item.count} @ $${Math.ceil(oneItemPlus * 100) / 100})` );
+    }
+    return total;
+  }
+  checkSaleTaxforImportedNotFood(item){
+    let totalSaleTax = 0;
+    if(item.taxType === 'import' && item.catagory !== 'Food' && item.count <= 1){
+      let saleTax = item.price * .15;
+      totalSaleTax += saleTax;
+    }
+    if (item.taxType === 'import' && item.catagory !== 'Food' && item.count > 1){
+      let saleTax = Math.ceil((item.price * .15) * 20) / 20;
+      let saleTaxMore = Math.ceil(saleTax * 100) / 100 * item.count;
+      totalSaleTax += saleTaxMore;
+    }
+    return totalSaleTax;
+  }
 
   totalOfEverything(cart){
     let total = 0;
@@ -111,7 +122,8 @@ class Receipt extends Cart{
       saleTax += this.checkSaleTaxforBasic(item);
       total += this.checkForImportFood(item);
       saleTax += this.checkSaleTaxforImportedFood(item);
-      // total += this.checkForImportNotFood(item);
+      total += this.checkForImportNotFood(item);
+      saleTax += this.checkSaleTaxforImportedNotFood(item);
     }
     console.log(`Sale Tax:$${saleTax.toFixed(2)}`);
     console.log(`Total: $${total.toFixed(2)}`);
