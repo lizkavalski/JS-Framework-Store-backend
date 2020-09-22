@@ -2,8 +2,6 @@
 let Cart = require('./cart');
 let mockShop = new Cart;
 
-
-
 describe('Cart function', () => {
   it('Can add to the cart',() => {
     const addItem = jest.spyOn(mockShop, 'addProduct');
