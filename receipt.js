@@ -72,11 +72,12 @@ class Receipt extends Cart{
     let totalSaleTax = 0;
     if(item.taxType === 'import' && item.catagory === 'Food' && item.count <= 1){
       let saleTax = item.price * .05;
-      totalSaleTax += saleTax;
+      totalSaleTax += Math.ceil(saleTax * 20) / 20;
+      console.log('line 75', totalSaleTax);
     }
     if (item.taxType === 'import' && item.catagory === 'Food' && item.count > 1){
       let saleTax = Math.ceil((item.price * .05) * 20) / 20;
-      let saleTaxMore = Math.ceil(saleTax * 100) / 100 * item.count;
+      let saleTaxMore = Math.ceil(saleTax * 20) / 20 * item.count;
       totalSaleTax += saleTaxMore;
     }
     return totalSaleTax;
@@ -103,11 +104,11 @@ class Receipt extends Cart{
     let totalSaleTax = 0;
     if(item.taxType === 'import' && item.catagory !== 'Food' && item.count <= 1){
       let saleTax = item.price * .15;
-      totalSaleTax += saleTax;
+      totalSaleTax += Math.ceil(saleTax * 20) / 20;
     }
     if (item.taxType === 'import' && item.catagory !== 'Food' && item.count > 1){
       let saleTax = Math.ceil((item.price * .15) * 20) / 20;
-      let saleTaxMore = Math.ceil(saleTax * 100) / 100 * item.count;
+      let saleTaxMore = Math.ceil(saleTax * 20) / 20 * item.count;
       totalSaleTax += saleTaxMore;
     }
     return totalSaleTax;
