@@ -1,8 +1,8 @@
 
 'use strict';
 
-const Cart = require('./cart');
-const Receipt = require('./receipt');
+const Cart = require('./cart/cart');
+const Receipt = require('./receipt/receipt');
 
 let shop = new Cart;
 let buy = new Receipt;

@@ -1,11 +1,10 @@
 'use strict';
-const Cart = require('./cart');
+const Cart = require('../cart/cart');
 
 class Receipt extends Cart{
   constructor() {
     super();
     this.getAllCart();
-    this.totalSale = 0;
   }
   checkForExempt(item){
     let total = 0;
@@ -73,7 +72,6 @@ class Receipt extends Cart{
     if(item.taxType === 'import' && item.catagory === 'Food' && item.count <= 1){
       let saleTax = item.price * .05;
       totalSaleTax += Math.ceil(saleTax * 20) / 20;
-      console.log('line 75', totalSaleTax);
     }
     if (item.taxType === 'import' && item.catagory === 'Food' && item.count > 1){
       let saleTax = Math.ceil((item.price * .05) * 20) / 20;
