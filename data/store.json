@@ -61,6 +61,20 @@
     "catagory":"Fragrance",
     "price":47.50,
     "taxType":"import"
+  },
+  {
+    "id":11,
+    "item":"Imported Book",
+    "catagory":"books",
+    "price":5.50,
+    "taxType":"import"
+  },
+  {
+    "id":12,
+    "item":"Imported Meds",
+    "catagory":"Medical",
+    "price":10.50,
+    "taxType":"import"
   }
 ]
 
