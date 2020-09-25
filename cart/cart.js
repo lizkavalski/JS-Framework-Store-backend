@@ -1,6 +1,6 @@
 'use strict';
 
-const data = require('./data/store.json');
+const data = require('../data/store.json');
 
 class Cart {
   constructor(){

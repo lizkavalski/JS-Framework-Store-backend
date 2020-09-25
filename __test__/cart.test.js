@@ -1,8 +1,8 @@
 'use strict';
-let Cart = require('./cart');
+let Cart = require('../cart/cart');
 let mockShop = new Cart;
 
-describe('Cart function', () => {
+describe('Cart Class', () => {
   it('Can add to the cart',() => {
     const addItem = jest.spyOn(mockShop, 'addProduct');
     mockShop.addProduct('Book', 1);
