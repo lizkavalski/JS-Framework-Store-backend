@@ -1,6 +1,5 @@
 
 'use strict';
-
 const Cart = require('./cart/cart');
 const Receipt = require('./receipt/receipt');
 
@@ -21,7 +20,6 @@ shop.addProduct('Book',1);
 shop.addProduct('Book',1);
 shop.addProduct('Music CD',4);
 shop.addProduct('Chocolate Bar',2);
-shop.removeAllCart();
 buy.totalOfEverything(shop);
 
 console.log('++++++++++++++++++++++++++++++++++++++++++++++++++++++');
