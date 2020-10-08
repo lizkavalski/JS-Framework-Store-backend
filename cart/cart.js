@@ -37,7 +37,7 @@ class Cart {
   }
 
   removeAllCart(){
-    // cart.length = 0;
+    this.cart.length = 0;
     return 'Cart is empty';
   }
 };

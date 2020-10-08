@@ -2,7 +2,7 @@
   "name": "dealeron-codechallenge",
   "version": "1.0.0",
   "description": "",
-  "main": "salesTaxes.js",
+  "main": "index.ejs",
   "scripts": {
     "test": "jest"
   },
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/lizkavalski/DealerOn-CodeChallenge#readme",
   "dependencies": {
+    "ejs": "^3.1.5",
     "jest": "^26.4.2"
   }
 }

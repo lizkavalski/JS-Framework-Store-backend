@@ -57,7 +57,7 @@ class Receipt extends Cart{
       total += Math.ceil(itemPlusTax * 100) / 100;
       console.log( `${item.item}: $${itemPlusTax.toFixed(2)}` );
     }
-    if ((item.taxType === 'import' && item.catagory === 'Food') && item.count > 1){
+    if (item.taxType === 'import' && (item.catagory === 'Food' || item.catagory === 'books' || item.catagory === 'Medical') && item.count > 1){
       let saleTax = Math.ceil((item.price * .05) * 10) / 10;
       let saleTaxMore = Math.ceil(saleTax * 100) / 100 * item.count;
       let itemsPlusTax = (item.price * item.count) + saleTaxMore;
@@ -73,7 +73,7 @@ class Receipt extends Cart{
       let saleTax = item.price * .05;
       totalSaleTax += Math.ceil(saleTax * 20) / 20;
     }
-    if (item.taxType === 'import' && item.catagory === 'Food' && item.count > 1){
+    if (item.taxType === 'import' && (item.catagory === 'Food' || item.catagory === 'books' || item.catagory === 'Medical') && item.count > 1){
       let saleTax = Math.ceil((item.price * .05) * 20) / 20;
       let saleTaxMore = Math.ceil(saleTax * 20) / 20 * item.count;
       totalSaleTax += saleTaxMore;
@@ -88,7 +88,7 @@ class Receipt extends Cart{
       total += Math.ceil(itemPlusTax * 100) / 100;
       console.log( `${item.item}: $${itemPlusTax.toFixed(2)}` );
     }
-    if (item.taxType === 'import' && item.catagory !== 'Food' && item.count > 1){
+    if (item.taxType === 'import' && (item.catagory !== 'Food' && item.catagory !== 'books' &&  item.catagory !== 'Medical') && item.count > 1){
       let saleTax = Math.ceil((item.price * .15) * 20) / 20;
       let saleTaxMore = Math.ceil(saleTax * 100) / 100 * item.count;
       let itemsPlusTax = (item.price * item.count) + saleTaxMore;
@@ -104,28 +104,32 @@ class Receipt extends Cart{
       let saleTax = item.price * .15;
       totalSaleTax += Math.ceil(saleTax * 20) / 20;
     }
-    if (item.taxType === 'import' && item.catagory !== 'Food' && item.count > 1){
+    if (item.taxType === 'import' && (item.catagory !== 'Food' && item.catagory !== 'books' &&  item.catagory !== 'Medical') && item.count > 1){
       let saleTax = Math.ceil((item.price * .15) * 20) / 20;
       let saleTaxMore = Math.ceil(saleTax * 20) / 20 * item.count;
       totalSaleTax += saleTaxMore;
     }
     return totalSaleTax;
   }
-
+  totalofEverythingSaleTax(cart){
+    let saleTax = 0;
+    for (const item of cart.getAllCart()) {
+      saleTax += this.checkSaleTaxforBasic(item);
+      saleTax += this.checkSaleTaxforImportedFood(item);
+      saleTax += this.checkSaleTaxforImportedNotFood(item);
+    }
+    console.log( `Sale Tax: $${saleTax.toFixed(2)}`);
+  }
   totalOfEverything(cart){
     let total = 0;
-    let saleTax = 0;
     for (const item of cart.getAllCart()) {
       total += this.checkForExempt(item);
       total += this.checkForBasic(item);
-      saleTax += this.checkSaleTaxforBasic(item);
       total += this.checkForImportFood(item);
-      saleTax += this.checkSaleTaxforImportedFood(item);
       total += this.checkForImportNotFood(item);
-      saleTax += this.checkSaleTaxforImportedNotFood(item);
     }
-    console.log(`Sale Tax:$${saleTax.toFixed(2)}`);
-    console.log(`Total: $${total.toFixed(2)}`);
+    this.totalofEverythingSaleTax(cart);
+    return `Total: $${total.toFixed(2)}`;
   };
 
 };
