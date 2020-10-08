@@ -118,7 +118,7 @@ class Receipt extends Cart{
       saleTax += this.checkSaleTaxforImportedFood(item);
       saleTax += this.checkSaleTaxforImportedNotFood(item);
     }
-    return `Sale Tax: $${saleTax.toFixed(2)}`;
+    console.log( `Sale Tax: $${saleTax.toFixed(2)}`);
   }
   totalOfEverything(cart){
     let total = 0;
