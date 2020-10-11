@@ -10,30 +10,40 @@ class Receipt extends Cart{
     let total = 0;
     if ((item.taxType === 'except') && (item.count <= 1) ){
       total += Math.ceil(item.price * 100) / 100;
-      console.log( `${item.item}: $${item.price}` );
+      // console.log( `${item.item}: $${item.price}` );
     }
     if ((item.taxType === 'except') && (item.count > 1)){
       let items = item.price * item.count;
       total += Math.ceil(items * 100 ) / 100 ;
-      console.log( `${item.item}: $${items} (${item.count} @ $${item.price})` );
+      // console.log( `${item.item}: $${items} (${item.count} @ $${item.price})` );
     }
     return total;
   }
-
+  printForExempt(item){
+    if ((item.taxType === 'except') && (item.count <= 1) ){
+      // total += Math.ceil(item.price * 100) / 100;
+      return `${item.item}: $${Math.ceil(item.price * 100) / 100}` ;
+    }
+    if ((item.taxType === 'except') && (item.count > 1)){
+      let items = item.price * item.count;
+      // total += Math.ceil(items * 100 ) / 100 ;
+      return `${item.item}: $${Math.ceil(items * 100 ) / 100} (${item.count} @ $${item.price})` ;
+    }
+  }
   checkForBasic(item){
     let total = 0;
     if(item.taxType === 'basic' && item.count <= 1){
       let saleTax = item.price * .10;
       let itemPlusTax = item.price + saleTax;
       total += Math.ceil(itemPlusTax * 100) / 100;
-      console.log( `${item.item}: $${itemPlusTax.toFixed(2)}` );
+      // console.log( `${item.item}: $${itemPlusTax.toFixed(2)}` );
     }
     if (item.taxType === 'basic' && item.count > 1){
       let saleTax = (item.price * .10) * item.count;
       let itemsPlusTax = (item.price * item.count) + saleTax;
       let oneItemPlus = item.price + (item.price * .10);
       total += Math.ceil(itemsPlusTax * 100) / 100;
-      console.log( `${item.item}: $${itemsPlusTax.toFixed(2)} (${item.count} @ $${oneItemPlus.toFixed(2)})` );
+      // console.log( `${item.item}: $${itemsPlusTax.toFixed(2)} (${item.count} @ $${oneItemPlus.toFixed(2)})` );
     }
     return total;
   }
@@ -48,6 +58,21 @@ class Receipt extends Cart{
       totalSaleTax += saleTax;
     }
     return totalSaleTax;
+  }
+  printForBasic(item){
+    if(item.taxType === 'basic' && item.count <= 1){
+      let saleTax = item.price * .10;
+      let itemPlusTax = item.price + saleTax;
+      let total = Math.ceil(itemPlusTax * 100) / 100;
+      return `${item.item}: $${total.toFixed(2)}` ;
+    }
+    if (item.taxType === 'basic' && item.count > 1){
+      let saleTax = (item.price * .10) * item.count;
+      let itemsPlusTax = (item.price * item.count) + saleTax;
+      let oneItemPlus = item.price + (item.price * .10);
+      let total = Math.ceil(itemsPlusTax * 100) / 100;
+      console.log( `${item.item}: $${total.toFixed(2)} (${item.count} @ $${oneItemPlus.toFixed(2)})` );
+    }
   }
   checkForImportFood(item){
     let total = 0;
@@ -111,6 +136,13 @@ class Receipt extends Cart{
     }
     return totalSaleTax;
   }
+  printEverything(cart){
+    for(const item of cart.getAllCart()){
+      this.printForExempt(item);
+      this.printForBasic(item);
+
+    }
+  }
   totalofEverythingSaleTax(cart){
     let saleTax = 0;
     for (const item of cart.getAllCart()) {
@@ -128,6 +160,7 @@ class Receipt extends Cart{
       total += this.checkForImportFood(item);
       total += this.checkForImportNotFood(item);
     }
+    console.log(this.printEverything(cart));
     this.totalofEverythingSaleTax(cart);
     return `Total: $${total.toFixed(2)}`;
   };
