@@ -12,6 +12,9 @@
     "id":2,
     "item":"Chocolate Bar",
     "catagory":"Food",
+    "desription":"All American Chocolate bar",
+    "img":"https://images.unsplash.com/photo-1591754550580-890a9016b687?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2hvY29sYXRlJTIwYmFyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    "inStock":400,
     "price":0.85,
     "taxType":"except"
   },
@@ -96,13 +99,25 @@
   },
   {
     "id":12,
-    "item":"Medical Spice from India",
+    "item":"Medical Spice",
     "catagory":"Medical",
+    "desription":"Help lose weight with is Indian medical tea",
     "img":"https://images.unsplash.com/photo-1487929054857-fad5245e7083?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
     "inStock":125,
     "price":10.50,
     "taxType":"import"
+  },
+  {
+    "id":13,
+    "item":"Mice and Men",
+    "catagory":"books",
+    "desription": "Book by American auther John Steinbeck. ",
+    "img":"https://images.unsplash.com/photo-1535092385070-a4a66c66a52e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8b2YlMjBtaWNlJTIwYW5kJTIwbWVufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    "inStock":168,
+    "price":9.85,
+    "taxType":"except"    
   }
+
 ]
 
 
