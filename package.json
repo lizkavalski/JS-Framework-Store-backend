@@ -1,23 +1,19 @@
 {
-  "name": "dealeron-codechallenge",
+  "name": "js-framework-store-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.ejs",
+  "description": "stores products for a store",
+  "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "\"test\": \"jest\""
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lizkavalski/DealerOn-CodeChallenge.git"
+    "url": "git+https://github.com/lizkavalski/JS-Framework-Store-backend.git"
   },
-  "author": "",
+  "author": "Liz",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/lizkavalski/DealerOn-CodeChallenge/issues"
+    "url": "https://github.com/lizkavalski/JS-Framework-Store-backend/issues"
   },
-  "homepage": "https://github.com/lizkavalski/DealerOn-CodeChallenge#readme",
-  "dependencies": {
-    "ejs": "^3.1.5",
-    "jest": "^26.4.2"
-  }
+  "homepage": "https://github.com/lizkavalski/JS-Framework-Store-backend#readme"
 }
