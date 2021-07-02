@@ -13,6 +13,11 @@ class Products {
     let oneItem=store.get(id)
     res.status(200).json(oneItem);
   }
+  createNewItem(req,res){
+    let obj =req.body;
+    let newItem=store.create(obj);
+    res.status(200).json(newItem);
+  }
 };
 
 module.exports = Products;
