@@ -19,7 +19,7 @@ app.get('/products', (req, res)=>{
 app.get('/products/:id', (req,res)=>{
   products.getOneItem(req,res)
 })
-app.post('/product/:id', (req,res)=>{
+app.post('/products/:id', (req,res)=>{
   products.createNewItem(req,res)
 })
 

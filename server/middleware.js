@@ -1,22 +1,26 @@
-const data = require('../data/store.json');
-const StoreModels = require('./models')
-const store = new StoreModels()
+// const data = require('../data/store.json');
+const storeModel = require('./models/schema')
+const Collection= require('./models/dataModels')
+const store = new Collection(storeModel)
 
 class Products {
-  getAllItems(req,res){
-    let allItem = store.get()
+  async getAllItems(req,res){
+    let allItem = await store.get()
     res.status(200).json(allItem)
     
   };
-  getOneItem(req, res){
-    const id = parseInt(req.params.id);
-    let oneItem=store.get(id)
+  async getOneItem(req, res){
+    const id = req.params.id;
+    let oneItem=await store.get(id)
     res.status(200).json(oneItem);
   }
-  createNewItem(req,res){
+  async createNewItem(req,res){
     let obj =req.body;
-    let newItem=store.create(obj);
+    let newItem=await store.create(obj);
     res.status(200).json(newItem);
+  }
+  updateItem(req,res){
+
   }
 };
 
