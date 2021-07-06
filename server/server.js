@@ -1,26 +1,16 @@
 'use strict'
 const express= require('express')
-const Products = require('./middleware')
+const productsRoute = require('./routes')
 const app = express()
-let products = new Products()
 
+app.use(express.json())
+app.use(productsRoute);
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
 });
 
-app.get('/', (req, res) => {
-  res.send('Welcome!');
-});
 
-app.get('/products', (req, res)=>{
-  products.getAllItems(req, res)
-});
-app.get('/products/:id', (req,res)=>{
-  products.getOneItem(req,res)
-})
-app.post('/products/:id', (req,res)=>{
-  products.createNewItem(req,res)
-})
+
 
 module.exports=app;

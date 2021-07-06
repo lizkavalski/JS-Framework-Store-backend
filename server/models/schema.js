@@ -3,9 +3,9 @@
 const mongoose = require('mongoose');
 
 const storeSchema = mongoose.Schema({
-  item: { type: String, required: true },
-  category: { type: String, required: true },
-  description:{ type:String, require:true},
+  item: { type: String},
+  category: { type: String},
+  description:{ type:String},
   img:{type:String},
   inStock:{type:Number, require:true},
   price:{type:Number, require:true},
