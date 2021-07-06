@@ -16,7 +16,7 @@ router.delete('/products/:id', deleteItem)
 async function getAllItems(req,res){
   let allItem = await store.get()
   res.status(200).json(allItem)
-};
+}
 async function getOneItem(req, res){
   const id = req.params._id;
   let oneItem =await store.get(id)
