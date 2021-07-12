@@ -7,6 +7,9 @@
     "start": "node index.js",
     "test": "jest --coverage --detectOpenHandles"
   },
+  "jest":{
+    "testEnvironment": "node"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lizkavalski/JS-Framework-Store-backend.git"

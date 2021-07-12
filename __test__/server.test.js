@@ -1,31 +1,14 @@
-
-require("dotenv").config()
-const mongoose =require("mongoose")
-const  server  = require('../server/server');
-const supertest = require('supertest');
-const mockRequest = supertest(server);
+const  app  = require('../server/server');
+const request = require('@code-fellows/supergoose');
 
 describe('TESTING 1..2..3,TESTING 1..2..3', () => {
-  beforeAll(async() => {
-    await mongoose.connect(process.env.MONGODB_URL, {
-        useNewUrlParser: true,
-        useCreateIndex: true,
-        useUnifiedTopology: true,
-    })
-});
-
-  it('should respond with a 404 on an invalid route', () => {
-    
-    return mockRequest
-    .get('/foobar')
-    .then(results => {
-      expect(results.status).toBe(404);
-    });
-    
+  test('should respond with a 404 on an invalid route', async() => {
+    const response = await request(app).get('/foobar')
+    expect(response.status).toBe(404) 
   });
   
-  it('should respond with a 404 on an invalid method', async () => {
-    const response = await mockRequest.put('/products');
+  test('should respond with a 404 on an invalid method', async () => {
+    const response = await request(app).put('/products');
     expect(response.status).toBe(404);
   });
   
@@ -35,19 +18,21 @@ describe('TESTING 1..2..3,TESTING 1..2..3', () => {
   //     category:"books",
   //     item:"Plant Book", 
   //   };
-  //   const response = await mockRequest.post('/products').send(data)
+  //    const response= await request(app).post('/products').send(data)
   //   expect(response.status).toBe(200);
   //   });
   // })
 
-
-  it('can get list of records', async () => {
-    const response = await mockRequest.get('/products');
+  test('can get the welcome page', async () => {
+    const response = await request(app).get('/');
     expect(response.status).toBe(200);
-    expect(Array.isArray(response.body)).toBeTruthy();
-    expect(response.body.length).toEqual(1);
-  }, 100000);
-
+  });
+  
+  test('can get the whole list', async () => {
+      const response = await request(app).get('/products');
+      console.log(`this the response:${response}`)
+      expect(response.status).toBe(200);
+    });
   // it('can get a record', async () => {
   //   const response = await mockRequest.get('/products/_id');
   //   expect(response.status).toBe(200);
@@ -74,5 +59,4 @@ describe('TESTING 1..2..3,TESTING 1..2..3', () => {
 
   // });
 
-
- });
+});

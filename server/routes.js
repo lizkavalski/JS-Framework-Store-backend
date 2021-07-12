@@ -15,11 +15,13 @@ router.delete('/products/:id', deleteItem)
 
 async function getAllItems(req,res){
   let allItem = await store.get()
+  console.log('all the items:',allItem)
   res.status(200).json(allItem)
 }
 async function getOneItem(req, res){
   const id = req.params._id;
   let oneItem =await store.get(id)
+  console.log('all the items:',oneItem)
   res.status(200).json(oneItem);
 }
 async function createNewItem(req,res){
