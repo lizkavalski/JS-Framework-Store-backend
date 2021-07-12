@@ -1,62 +1,92 @@
 const  app  = require('../server/server');
 const request = require('@code-fellows/supergoose');
+const mockRequest = request(app);
 
-describe('TESTING 1..2..3,TESTING 1..2..3', () => {
-  test('should respond with a 404 on an invalid route', async() => {
-    const response = await request(app).get('/foobar')
-    expect(response.status).toBe(404) 
+describe('web server', () => {
+
+  it('should respond with a 404 on an invalid route',() => {
+
+    return mockRequest
+      .get('/foobar')
+      .then(results => {
+        expect(results.status).toBe(404);
+      });
+
   });
-  
-  test('should respond with a 404 on an invalid method', async () => {
-    const response = await request(app).put('/products');
+
+  // These tests are wired with async/await --- so much cleaner!
+  it('should respond with a 404 on an invalid method', async () => {
+    const response = await mockRequest.put('/products');
     expect(response.status).toBe(404);
   });
-  
 
-  // it('can create a record', async() => {
-  //   const data = {
-  //     category:"books",
-  //     item:"Plant Book", 
-  //   };
-  //    const response= await request(app).post('/products').send(data)
-  //   expect(response.status).toBe(200);
-  //   });
-  // })
+  it('can create a record', async () => {
+    const data = {
+      item: 'carrots',
+      price: .25,
+      category: 'Food'
+    };
 
-  test('can get the welcome page', async () => {
-    const response = await request(app).get('/');
+    const response = await mockRequest.post('/products').send(data);
     expect(response.status).toBe(200);
+    expect(response.body._id).toBeDefined();
   });
-  
-  test('can get the whole list', async () => {
-      const response = await request(app).get('/products');
-      console.log(`this the response:${response}`)
-      expect(response.status).toBe(200);
-    });
-  // it('can get a record', async () => {
-  //   const response = await mockRequest.get('/products/_id');
-  //   expect(response.status).toBe(200);
-  //   expect(typeof response.body).toEqual('object');
-  //   expect(response.body.id).toEqual(1);
-  // });
 
-  // it('can update a record', async () => {
-  //   const data = { item: "Broccoli" };
-  //   const response = await mockRequest.put('/products/1').send(data);
-  //   expect(response.status).toBe(200);
-  //   expect(typeof response.body).toEqual('object');
-  //   expect(response.body.id).toEqual(1);
-  //   expect(response.body.data.name).toEqual("item");
-  // });
+  it('can get list of records', async () => {
+    const response = await mockRequest.get('/products');
+    expect(response.status).toBe(200);
+    expect(Array.isArray(response.body)).toBeTruthy();
+    expect(response.body.length).toEqual(1);
+  });
 
-  // it('can delete a record', async () => {
-  //   const response = await mockRequest.delete('/products/1');
-  //   expect(response.status).toBe(200);
-  //   expect(response.body).toBeFalsy();
+  it('can get a record', async () => {
+    const data = {
+      item: 'carrots',
+      price: .25,
+      category: 'Food'
+    };
 
-  //   const getResponse = await mockRequest.get('/products');
-  //   expect(getResponse.body.length).toEqual(0);
+    const getRecord = await mockRequest.post('/products').send(data);
+    let id = getRecord.body._id;
+    const response = await mockRequest.get(`/products/${id}`);
+    expect(response.status).toBe(200);
+    expect(typeof response.body).toEqual('object');
+    expect(response.body._id).toEqual(id);
+  });
 
-  // });
+  it('can update a record', async () => {
+    const data = {
+      item: 'carrots',
+      price: .25,
+      category: 'Food'
+    };
+
+    const getRecord = await mockRequest.post('/products').send(data);
+    let id = getRecord.body._id;
+    const newData = { item: "Broccoli" };
+    const response = await mockRequest.put(`/products/${id}`).send(newData);
+    expect(response.status).toBe(200);
+    expect(typeof response.body).toEqual('object');
+    expect(response.body._id).toEqual(id);
+    expect(response.body.item).toEqual("Broccoli");
+  });
+
+  it('can delete a record', async () => {
+    const data = {
+      item: 'carrots',
+      price: .25,
+      category: 'Food'
+    };
+
+    const getRecord = await mockRequest.post('/products').send(data);
+    let id = getRecord.body._id;
+    const response = await mockRequest.delete(`/products/${id}`);
+    expect(response.status).toBe(200);
+    expect(response.body).toBe(response.body);
+
+    const getResponse = await mockRequest.get('/products');
+    expect(getResponse.body.length).toEqual(3);
+
+  });
 
 });
