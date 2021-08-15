@@ -1,4 +1,3 @@
-const data = require('../../data/store.json');
 class DataCollection {
 
   constructor(model) {
