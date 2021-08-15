@@ -6,3 +6,5 @@ A backend that store items used for a  mock store-front that uses a different Ja
 Root URl for API- `https://js-framework-store-api.herokuapp.com/`
 
 To GET list of all Products-`https://js-framework-store-api.herokuapp.com/`
+
+To GET one product-`https://js-framework-store-api.herokuapp.com/:id`
