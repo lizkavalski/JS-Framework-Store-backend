@@ -1,17 +1,33 @@
 // const data = require('../data/store.json');
 const express=require('express');
-const storeModel= require('./models/schema');
-const Collection= require('./models/dataModels');
-const store = new Collection(storeModel);
+// const productModel= require('./models/productSchema');
+// const categoryModel= require('./models/categorySchema');
+const Collection= require('../src/models/dataModels');
+// const product = new Collection(productModel);
+// const category = new Collection(categoryModel);
 
 const router=express.Router();
 
+router.param('model', (req, res, next) => {
+  const fileName = `${__dirname}/../models/${req.params.model}/model.js`;
+  console.log('this is the file name', fileName)
+
+  // This should be async ...
+  if (fs.existsSync(fileName)) {
+    const model = require(fileName);
+    req.model = new Collection(model);
+    next();
+  } else {
+    next("Invalid Model");
+  }
+});
+
 router.get('/', (req, res) => {res.send('Welcome!');});
-router.get('/products', getAllItems );
-router.get('/products/:id', getOneItem);
-router.post('/products', createNewItem);
-router.put('/products/:id',updateItem);
-router.delete('/products/:id', deleteItem)
+router.get('/:model', getAllItems );
+router.get('/:model/:id', getOneItem);
+router.post('/model', createNewItem);
+router.put('/model/:id',updateItem);
+router.delete('/model/:id', deleteItem)
 
 async function getAllItems(req,res){
   let allItem = await store.get()

@@ -1,12 +1,12 @@
 'use strict'
 const express= require('express')
-const productsRoute = require('./routes')
-const notFound=require('./middleware/404');
-const errorHandler=require('./middleware/500');
+const storeRoute = require('./server/routes/routes')
+const notFound=require('./server/src/middleware/404');
+const errorHandler=require('./server/src/middleware/500');
 const app = express()
 
 app.use(express.json())
-app.use(productsRoute);
+app.use(storeRoute);
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
