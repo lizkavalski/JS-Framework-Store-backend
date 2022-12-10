@@ -7,7 +7,7 @@
     "start": "node index.js",
     "test": "jest --coverage --detectOpenHandles"
   },
-  "jest":{
+  "jest": {
     "testEnvironment": "node"
   },
   "repository": {
@@ -24,7 +24,7 @@
     "@code-fellows/supergoose": "^1.1.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mongoose": "^5.13.2",
+    "mongoose": "^6.7.1",
     "nodemon": "^2.0.9",
     "supertest": "^6.1.3"
   },
