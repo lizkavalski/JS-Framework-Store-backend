@@ -8,3 +8,5 @@ Root URl for API- `https://js-framework-store-api.herokuapp.com/`
 To GET list of all Products-`https://js-framework-store-api.herokuapp.com/products`
 
 To GET one product-`https://js-framework-store-api.herokuapp.com/products/:id`
+
+editing
