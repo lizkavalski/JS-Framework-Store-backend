@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 
-const storeSchema = mongoose.Schema({
+const productSchema = mongoose.Schema({
   item: { type: String},
   category: { type: String},
   description:{ type:String},
@@ -12,6 +12,6 @@ const storeSchema = mongoose.Schema({
   taxType: { type: String, reqired:true, enum: ['basic', 'except', 'import'] },
 });
 
-const storeModel = mongoose.model('store', storeSchema);
+const product= mongoose.model('product', productSchema);
 
-module.exports = storeModel;
+module.exports = product;

@@ -1,16 +1,17 @@
 'use strict'
 require('dotenv').config();
 const app =require('./server/server');
-const mongoose= require('mongoose');
 const port = process.env.PORT;
-const setting= {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-}
 
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = process.env.MONGODB_URL;
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+client.connect(err => {
+  const collection = client.db("Store").collection("category","product");
+  // perform actions on the collection object
+  client.close();
+});
 
-mongoose.connect(process.env.MONGODB_URL, setting);
 
 app.listen(port, () => {
   console.log(`The port is listening ${port}`);
